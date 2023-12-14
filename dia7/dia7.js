@@ -58,11 +58,39 @@ console.log(" E a maior nota registrada por um homem é de: "+ maior_nota_homem)
 
 
 console.log("============EX 3 =============")
-condicao = true
+ condicao = true
+let saldo_total = 0 
+let vezes_valor = 0
+let qtd_valor =0
+let maior_valor=0
 do{
 let nome_cliente = prompt("Insira seu nome: ")
 let cpf = prompt( "Qual seu cpf? (xxx.xxx.xxx-xx)")
 let valor = Number(prompt("Insira um valor"))
 let opcao_bancaria = prompt("Digite S para Sacar e D para Depositar")
-
+vezes_valor = vezes_valor + valor
+qtd_valor = qtd_valor + 1
+if (opcao_bancaria === "S" && saldo_total >= valor) {
+    saldo_total = saldo_total - valor
+}
+ else if(opcao_bancaria === "S" && saldo_total < valor){
+    console.log("Voce nao tem saldo suficiente em sua conta, favor faca um deposito")
+}
+if(opcao_bancaria === "D"){
+    saldo_total = saldo_total +  valor
+}
+if( valor> maior_valor){
+    maior_valor = valor
+}
+let repetir = Number(prompt("Digite 1 para continuar ou 2 para parar"))
+if(repetir === 1){
+ condicao = true
+}
+ else if(repetir === 2){
+  condicao = false
+ }
 }while(condicao)
+
+console.log(" O saldo na conta é de R$" + saldo_total)
+console.log("A media dos valores é de:"+ vezes_valor / qtd_valor )
+console.log("O maior valor inserido para sacar ou depositar foi de: " + maior_valor)
